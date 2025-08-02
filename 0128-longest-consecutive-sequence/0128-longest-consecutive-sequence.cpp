@@ -4,6 +4,10 @@ public:
         sort(nums.begin(),nums.end());
         int count = 1;
         int maxcount = 1;
+        if(nums.empty())
+        {
+             return 0;
+        }
         for(int i =1; i<=nums.size()-1; i++)
         {
              if(nums[i] == nums[i-1])
