@@ -13,39 +13,36 @@ public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         ListNode* ptr1 = list1;
         ListNode* ptr2 = list2;
-        ListNode* ptr3;
-        if(ptr1 == nullptr && ptr2 == nullptr)
-        {
-            return ptr3;
-        }
-        while(ptr1 != nullptr || ptr2 != nullptr)
+        ListNode ptr3;
+        ListNode* p = &ptr3;
+        while(ptr1 != nullptr && ptr2 != nullptr)
         {
             if(ptr1->val <= ptr2->val)
             {
-                ptr3->val = ptr1->val;
+                p->next = ptr1;
                 ptr1 = ptr1->next;
-                ptr3 = ptr3->next;
+                p = p->next;
             }
             else
             {
-                ptr3->val = ptr2->val;
+                p->next = ptr2;
                 ptr2 = ptr2->next;
-                ptr3 = ptr3->next;
+                p = p->next;
             }
            
         }
          while(ptr1 != nullptr)
             {
-                ptr3->val = ptr1->val;
-                ptr3 = ptr3->next;
+                p->next = ptr1;
+                p = p->next;
                 ptr1 = ptr1->next;
             }
-            while(ptr2 != nullptr)
+           while(ptr2 != nullptr)
             {
-                ptr3->val = ptr2->val;
-                ptr3 = ptr3->next;
+                p->next = ptr2;
+                p = p->next;
                 ptr2 = ptr2->next;
             }
-            return ptr3;
+            return ptr3.next;
     }
 };
